@@ -1,0 +1,49 @@
+<div class="outer">
+    <div class="container">
+        <div calss="row">
+            <div class="col-lg-4 col-md-7 content">
+                <div class="panel border bg-white">
+                 <div class="panel-heading">
+                   <h3 class="pt-3 fw-b">Login</h3>
+                 </div>
+                 <div class="panel-body p-3">
+                    <form [formGroup] ="loginForm">
+                        <div calss="form-group pt-3">
+                          <div class="input-field" [class.error]= "loginForm.controls['username'].dirty && loginForm.hasError('required', 'username') ||  submitted && loginForm.hasError('required', 'username')">
+                           <span class="fa fa-user p-2"></span>
+                           <input  formControlName ="username" type="text" placeholder="username">
+                          </div>
+                        </div>
+                        <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required', 'username') ||  submitted && loginForm.hasError('required', 'username')" class="text-danger"> Username is required</small>
+
+                        <div calss="form-group pt-3">
+                            <div class="input-field" [class.error]= "loginForm.controls['password'].dirty && loginForm.hasError('required', 'password') || submitted && loginForm.hasError('required', 'password')">
+                             <span class="fa fa-lock p-2"></span>
+                             <input formControlName ="password" [type]="type" placeholder="password">
+                             <span (click) ="hideShowPass()" class="fa {{eyeIcon}}"></span>
+                            </div>
+                        </div>
+                        <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password') || submitted && loginForm.hasError('required', 'password')" class="text-danger"> Password is required</small>
+
+                        <div calss="form-inline fr mt-4">
+                           <a id="forget" class="fw-b">Forget Password?</a>
+                        </div>
+                        <button (click)="onSubmit()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
+                        <div class="login-txt">Dont have account?
+                            <a id="forget" routerLink ="/sign-up">Sign Up</a>
+                        </div>
+                    </form>
+                 </div>
+                 <!-- <div class="mx-3 my-2 py-2 bordert">
+                   <div class="txt-center py-3">
+                     <a href="https://www.facebook.com" target="_blank" class="px-2"><img src="https://dpreview.com/files/p/articles/"></a>
+                     <a href="https://www.google.com" target="_blank" class="px-2"><svg aria-hidden="true" class="_ufjrdd" viewBox="0 0 24 24" role="img" aria-labelledby="Facebook3b7e9cb0-4de6-48d9-c25e-3d23d4b1d8ea Facebook3b7e9cb0-4de6-48d9-c25e-3d23d4b1d8eaDesc" xmlns="http://www.w3.org/2000/svg" style="fill: rgb(59, 89, 152); height: 18px; width: 18px; left: 24px; position: absolute; top: 15px;"><title id="Facebook3b7e9cb0-4de6-48d9-c25e-3d23d4b1d8ea">Facebook</title><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" role="presentation"></path></svg></a>
+                     <a href="https://www.github.com" target="_blank" class="px-2"><img src="https://"></a>
+                   </div>                 
+                 </div> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

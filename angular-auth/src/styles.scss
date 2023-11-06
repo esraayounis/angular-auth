@@ -1,0 +1,95 @@
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "src/app/styles/variables.scss";
+
+.outer{
+    height:100vh;
+    background: linear-gradient(to top, #c9c9ff 50%, #6e6ef6 90%) no-repeat;
+}
+
+.content{
+    margin: $mar-auto;
+    padding: 50px 0 0 0;
+}
+
+.panel-heading{
+    text-align: $txt-center;
+    margin-bottom: 10px;
+}
+#forget{
+    min-width: 100px;
+    margin-left: auto;
+    text-decoration: $txt-deco-none;
+    cursor: $cursor;
+}
+a:hover{
+    text-decoration: $txt-deco-none;
+}
+.form-inline label{
+    padding-left: 10px;
+    margin:$no-mar;
+    cursor: $cursor;
+}
+.btn{
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.panel{
+    min-height: 300px;
+    border-radius: 12px;
+    box-shadow: 20px 20px 88px rgb(218, 218,218);
+}
+
+.input-field{
+    border-radius: 5px;
+    padding:5px;
+    display: $dis-flex;
+    align-items: $align-i-center;
+    cursor: $cursor;
+    border: 1px solid #ddd;
+    color:#4343ff;
+    margin-bottom: 15px;
+}
+
+.input-field-error{
+    border: 1px solid red;
+    color: red
+}
+
+input[type='text'],
+input[type='password']{
+    border:$no-border;
+    outline: $none-outline;
+    box-shadow: $no-box-shadow;
+    width:$w-100;
+}
+
+.fa-eye-slash.btn{
+    border:$no-border;
+}
+
+img{
+    width:40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: $border-radius-50;
+}
+
+
+.login-txt{
+   padding-top: $pt-4;
+   text-align:  $txt-center;
+   color: #606060;
+}
+
+#email{
+  border: $no-border;
+}
+#email:focus-visible{
+    outline: $none-outline;
+}
+
+.error{
+    border:1px solid red;
+    margin-bottom: 0;
+}
