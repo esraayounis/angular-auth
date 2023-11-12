@@ -20,10 +20,10 @@ export class HomeComponent {
 
   ngOnInit() {
     
-    this.auth.getAllUsers().subscribe(res=>{
-    this.users = res;
-    console.log(this.users);
-    });
+    // this.auth.getAllUsers().subscribe(res=>{
+    // this.users = res;
+    // console.log(this.users);
+    // });
 
     this.userStore.getFullNameFromStore().subscribe(val=>{
       const fullNameFromToken = this.auth.getfullNameFromToken();

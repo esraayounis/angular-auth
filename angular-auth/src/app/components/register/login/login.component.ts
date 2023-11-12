@@ -1,4 +1,4 @@
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -39,7 +39,7 @@ export class LoginComponent {
 
     onSubmit(){
      this.submitted = true;
-     debugger
+     
      if(this.loginForm.valid){
       console.log(this.loginForm.value);
 

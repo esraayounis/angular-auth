@@ -39,7 +39,7 @@ export class SignUpComponent {
 
     onSubmit(){
       this.submitted = true;
-      debugger
+      
       if(this.signUpForm.valid){
         console.log(this.signUpForm.value);
         let signUpObj ={
