@@ -22,8 +22,6 @@ export class SignUpComponent {
 
     ngOnInit(): void {
       this.signUpForm = this.fb.group({
-        firstName:['', Validators.required],
-        lastName:['', Validators.required],
         email:['', Validators.required],
         username:['', Validators.required],
         password: ['', Validators.required]
@@ -38,6 +36,7 @@ export class SignUpComponent {
 
     onSubmit(){
       this.submitted = true;
+      debugger
       if(this.signUpForm.valid){
         console.log(this.signUpForm.value);
         let signUpObj ={
@@ -47,6 +46,7 @@ export class SignUpComponent {
           "role": "customer",
           "avatar": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3D%2522user%2Bicon%2522&psig=AOvVaw38VcZVz7OUOepElo-wDLXx&ust=1699325350689000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMDdgbKuroIDFQAAAAAdAAAAABAE"
         }
+
         this.authServic.signUp(signUpObj).subscribe({
           next:(res)=>{
             console.log(res.message);
@@ -58,6 +58,7 @@ export class SignUpComponent {
             this.toast.error({detail:"ERROR" ,  summary: "something when wrong" , duration: 5000});
             console.log(err);
           }
+          
         })
        }
  
@@ -65,6 +66,7 @@ export class SignUpComponent {
         validateForm.validateAllFormFields(this.signUpForm);
        alert("your form is invalid")
       }
+     
      }
 
 }

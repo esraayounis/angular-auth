@@ -1,9 +1,10 @@
 import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import validateForm from 'src/app/helpers/validateform';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,12 @@ export class LoginComponent {
   eyeIcon: string = "fa-eye-slash";
   submitted = false;
 
-  constructor(private fb: FormBuilder, private authService :AuthService, private router:Router, private toast: NgToastService) { 
+  constructor(private fb: FormBuilder, private authService :AuthService, private router:Router, 
+    private toast: NgToastService,  private userStore: UserStoreService) { 
     }
     ngOnInit(): void {
       this.loginForm = this.fb.group({
-        username:['', Validators.required],
+        email:['', Validators.required],
         password: ['', Validators.required]
        });
     }
@@ -33,15 +35,19 @@ export class LoginComponent {
     }
 
     onSubmit(){
-      debugger
      this.submitted = true;
+     debugger
      if(this.loginForm.valid){
       console.log(this.loginForm.value);
-      this.authService.signUp(this.loginForm.value).subscribe({
+
+      this.authService.login(this.loginForm.value).subscribe({
         next:(res)=>{
-          console.log(res.message);
           this.loginForm.reset();
-          this.authService.storeToken(res.token);
+          this.authService.storeToken(res.access_token);
+          this.authService.storeRefreshToken(res.refreshToken);
+          const tokenPayload = this.authService.decodedToken();
+          this.userStore.setFullNameForStore(tokenPayload.name);
+          this.userStore.setRoleForStore(tokenPayload.role);
           this.toast.success({detail:"SUCCESS" ,  summary: res.message , duration: 5000});
           this.router.navigate(["home"]);
         },
