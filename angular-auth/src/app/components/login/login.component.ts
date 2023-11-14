@@ -1,15 +1,18 @@
 import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import validateForm from 'src/app/helpers/validateform';
 import { UserStoreService } from 'src/app/services/user-store.service';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgIf, RouterLink]
 })
 export class LoginComponent {
   loginForm!: FormGroup;
